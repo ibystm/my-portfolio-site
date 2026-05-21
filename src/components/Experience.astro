@@ -9,13 +9,7 @@ import { jobs } from '../data/experience';
 >
   <h2 class="numbered-heading" data-number="02.">職歴</h2>
 
-  <div
-    style="
-      display: flex;
-      gap: 0;
-      min-height: 340px;
-    "
-  >
+  <div style="display: flex; gap: 0; min-height: 340px;">
     <!-- タブリスト -->
     <div
       id="tab-list"
@@ -66,6 +60,7 @@ import { jobs } from '../data/experience';
             data-panel={i}
             style={`display: ${i === 0 ? 'block' : 'none'};`}
           >
+            <!-- タイトル & 会社名 -->
             <h3
               style="
                 font-size: 1.25rem;
@@ -81,10 +76,7 @@ import { jobs } from '../data/experience';
                   href={job.companyUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style="
-                    color: var(--color-accent);
-                    text-decoration: none;
-                  "
+                  style="color: var(--color-accent); text-decoration: none;"
                   onmouseover="this.style.textDecoration='underline'"
                   onmouseout="this.style.textDecoration='none'"
                 >
@@ -93,18 +85,44 @@ import { jobs } from '../data/experience';
               </span>
             </h3>
 
+            <!-- 期間・雇用形態 -->
             <p
               style="
                 font-family: var(--font-mono);
                 font-size: 0.8125rem;
                 color: var(--color-slate);
-                margin: 0 0 1.5rem;
+                margin: 0 0 0.625rem;
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
               "
             >
               {job.period}
+              <span style="
+                color: var(--color-slate);
+                background-color: var(--color-navy-lighter);
+                border-radius: 9999px;
+                padding: 0.1rem 0.6rem;
+                font-size: 0.75rem;
+              ">{job.employmentType}</span>
             </p>
 
-            <ul style="list-style: none; padding: 0; margin: 0;">
+            <!-- 会社概要 -->
+            <p
+              style="
+                font-size: 0.875rem;
+                color: var(--color-slate);
+                line-height: 1.6;
+                margin: 0 0 1.25rem;
+                padding: 0.625rem 0.875rem;
+                border-left: 2px solid var(--color-navy-lighter);
+              "
+            >
+              {job.description}
+            </p>
+
+            <!-- 箇条書き -->
+            <ul style="list-style: none; padding: 0; margin: 0 0 1.5rem;">
               {job.bullets.map((bullet) => (
                 <li
                   style="
@@ -116,16 +134,37 @@ import { jobs } from '../data/experience';
                     font-size: 0.9375rem;
                   "
                 >
-                  <span
-                    style="
-                      color: var(--color-accent);
-                      margin-top: 0.35rem;
-                      flex-shrink: 0;
-                    "
-                  >
-                    ▹
-                  </span>
+                  <span style="color: var(--color-accent); margin-top: 0.35rem; flex-shrink: 0;">▹</span>
                   {bullet}
+                </li>
+              ))}
+            </ul>
+
+            <!-- 使用技術バッジ -->
+            <ul
+              style="
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                list-style: none;
+                padding: 0;
+                margin: 0;
+              "
+            >
+              {job.tech.map((t) => (
+                <li
+                  style="
+                    font-family: var(--font-mono);
+                    font-size: 0.75rem;
+                    color: var(--color-accent);
+                    background-color: var(--color-accent-tint);
+                    border: 1px solid rgba(100, 255, 218, 0.2);
+                    border-radius: 9999px;
+                    padding: 0.25rem 0.75rem;
+                    line-height: 1.5;
+                  "
+                >
+                  {t}
                 </li>
               ))}
             </ul>
