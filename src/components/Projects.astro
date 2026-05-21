@@ -1,0 +1,174 @@
+---
+import { featuredProjects } from '../data/projects';
+
+const externalIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
+const githubIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>`;
+---
+
+<section
+  id="projects"
+  class="section fade-in"
+  style="padding: 6rem 6rem;"
+>
+  <h2 class="numbered-heading" data-number="03.">制作物</h2>
+
+  <div style="display: flex; flex-direction: column; gap: 6rem;">
+    {
+      featuredProjects.map((project, i) => {
+        const isEven = i % 2 === 0;
+        return (
+          <div
+            style={`
+              display: grid;
+              grid-template-columns: repeat(12, 1fr);
+              align-items: center;
+              gap: 0;
+            `}
+          >
+            {/* 画像 */}
+            <div
+              style={`
+                grid-column: ${isEven ? '1 / 8' : '6 / 13'};
+                grid-row: 1;
+                position: relative;
+                border-radius: 4px;
+                overflow: hidden;
+                background-color: var(--color-accent);
+              `}
+            >
+              <a
+                href={project.external ?? project.github ?? '#'}
+                target="_blank"
+                rel="noopener noreferrer"
+                style="display: block; width: 100%; aspect-ratio: 16 / 9; overflow: hidden;"
+              >
+                <div
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(135deg, var(--color-navy-light) 0%, var(--color-navy-lighter) 100%);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: var(--color-accent);
+                    font-size: 3rem;
+                    position: relative;
+                  "
+                >
+                  {/* /public/projects/ 以下に画像を置けば img タグに切り替えてください */}
+                  <span style="opacity: 0.3; font-family: var(--font-mono);">&#123;&#125;</span>
+                </div>
+              </a>
+            </div>
+
+            {/* テキスト */}
+            <div
+              style={`
+                grid-column: ${isEven ? '7 / 13' : '1 / 7'};
+                grid-row: 1;
+                position: relative;
+                z-index: 2;
+                text-align: ${isEven ? 'right' : 'left'};
+              `}
+            >
+              <p
+                style="
+                  font-family: var(--font-mono);
+                  font-size: 0.8125rem;
+                  color: var(--color-accent);
+                  margin: 0 0 0.5rem;
+                "
+              >
+                注目プロジェクト
+              </p>
+              <h3
+                style="
+                  font-size: 1.5rem;
+                  font-weight: 600;
+                  color: var(--color-slate-lighter);
+                  margin: 0 0 1.5rem;
+                "
+              >
+                <a
+                  href={project.external ?? project.github ?? '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style="text-decoration: none; color: inherit; transition: color 0.25s;"
+                  onmouseover="this.style.color='var(--color-accent)'"
+                  onmouseout="this.style.color='var(--color-slate-lighter)'"
+                >
+                  {project.title}
+                </a>
+              </h3>
+
+              <div
+                style="
+                  background-color: var(--color-navy-light);
+                  border-radius: 4px;
+                  padding: 1.5rem;
+                  margin-bottom: 1.5rem;
+                  box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
+                "
+              >
+                <p style="line-height: 1.7; font-size: 0.9375rem; margin: 0;">
+                  {project.description}
+                </p>
+              </div>
+
+              <ul
+                style={`
+                  display: flex;
+                  flex-wrap: wrap;
+                  gap: 0.75rem 1.25rem;
+                  list-style: none;
+                  padding: 0;
+                  margin: 0 0 1.25rem;
+                  justify-content: ${isEven ? 'flex-end' : 'flex-start'};
+                `}
+              >
+                {project.tech.map((t) => (
+                  <li style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-slate);">
+                    {t}
+                  </li>
+                ))}
+              </ul>
+
+              <div
+                style={`
+                  display: flex;
+                  gap: 1rem;
+                  justify-content: ${isEven ? 'flex-end' : 'flex-start'};
+                `}
+              >
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                    style="color: var(--color-slate-lighter); transition: color 0.25s;"
+                    onmouseover="this.style.color='var(--color-accent)'"
+                    onmouseout="this.style.color='var(--color-slate-lighter)'"
+                    set:html={githubIcon}
+                  />
+                )}
+                {project.external && (
+                  <a
+                    href={project.external}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="External link"
+                    style="color: var(--color-slate-lighter); transition: color 0.25s;"
+                    onmouseover="this.style.color='var(--color-accent)'"
+                    onmouseout="this.style.color='var(--color-slate-lighter)'"
+                    set:html={externalIcon}
+                  />
+                )}
+              </div>
+            </div>
+          </div>
+        );
+      })
+    }
+  </div>
+</section>

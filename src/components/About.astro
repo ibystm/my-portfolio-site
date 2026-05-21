@@ -1,0 +1,136 @@
+---
+const skills = [
+  'JavaScript (ES6+)',
+  'TypeScript',
+  'React',
+  'Node.js',
+  'Python',
+  'SQL / NoSQL',
+];
+---
+
+<section
+  id="about"
+  class="section fade-in"
+  style="padding: 6rem 6rem;"
+>
+  <h2 class="numbered-heading" data-number="01.">自己紹介</h2>
+
+  <div
+    style="
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 3rem;
+      align-items: start;
+    "
+  >
+    <div>
+      <p style="margin-bottom: 1rem; line-height: 1.8; font-size: 1rem;">
+        はじめまして、<span style="color: var(--color-accent);">Your Name</span> です。
+        インターネット上に動くものをつくることが好きで、20XX 年に最初のプロジェクトを
+        <!-- 自分のストーリーをここに書いてください -->
+        作ったことをきっかけに Web 開発にのめり込みました。
+        カスタムテーマを試行錯誤するうちに、HTML &amp; CSS の楽しさを知りました。
+      </p>
+
+      <p style="margin-bottom: 1rem; line-height: 1.8; font-size: 1rem;">
+        現在までに、
+        <!-- 過去の職歴・経験を記述してください -->
+        <a href="#experience" style="color: var(--color-accent); text-decoration: none;">スタートアップ</a>・
+        大手企業・代理店など様々な環境で経験を積んできました。
+        現在はアクセシブルで人を中心に据えたプロダクト・デジタル体験づくりに注力しています。
+      </p>
+
+      <p style="margin-bottom: 1.5rem; line-height: 1.8; font-size: 1rem;">
+        最近よく使っている技術：
+      </p>
+
+      <ul
+        style="
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 0.25rem 1rem;
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        "
+      >
+        {
+          skills.map((skill) => (
+            <li
+              style="
+                font-family: var(--font-mono);
+                font-size: 0.8125rem;
+                color: var(--color-slate);
+                padding: 0.25rem 0;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+              "
+            >
+              <span style="color: var(--color-accent);">▹</span>
+              {skill}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <!-- プロフィール画像エリア -->
+    <div style="position: relative;">
+      <div
+        style="
+          position: relative;
+          width: 100%;
+          max-width: 280px;
+          border-radius: 4px;
+        "
+      >
+        <div
+          style="
+            position: relative;
+            width: 100%;
+            padding-top: 100%;
+            border-radius: 4px;
+            overflow: hidden;
+            background-color: var(--color-accent);
+          "
+        >
+          <!-- /public/me.jpg に写真を置いてください -->
+          <img
+            src="/me.jpg"
+            alt="Profile photo"
+            style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              border-radius: 4px;
+              mix-blend-mode: multiply;
+              filter: grayscale(100%) contrast(1);
+              transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+            "
+            onmouseover="this.style.filter='none'; this.style.mixBlendMode='normal'"
+            onmouseout="this.style.filter='grayscale(100%) contrast(1)'; this.style.mixBlendMode='multiply'"
+          />
+        </div>
+        <!-- アクセントボーダー装飾 -->
+        <div
+          style="
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--color-accent);
+            border-radius: 4px;
+            z-index: -1;
+            transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+          "
+        ></div>
+      </div>
+    </div>
+  </div>
+</section>

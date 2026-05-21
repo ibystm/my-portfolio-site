@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #0a192f;
+  --color-navy-light: #112240;
+  --color-navy-lighter: #233554;
+  --color-slate: #8892b0;
+  --color-slate-light: #a8b2d8;
+  --color-slate-lighter: #ccd6f6;
+  --color-off-white: #e6f1ff;
+  --color-accent: #64ffda;
+  --color-accent-tint: rgba(100, 255, 218, 0.1);
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Fira Code", "Fira Mono", ui-monospace, monospace;
+
+  --transition-default: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-navy);
+    color: var(--color-slate);
+    font-family: var(--font-sans);
+    line-height: 1.3;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-navy);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-navy-lighter);
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background-color: var(--color-navy-lighter);
+    color: var(--color-slate-lighter);
+  }
+}
+
+@layer components {
+  .numbered-heading {
+    display: flex;
+    align-items: center;
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    font-weight: 600;
+    color: var(--color-slate-lighter);
+    white-space: nowrap;
+    margin-bottom: 2.5rem;
+  }
+
+  .numbered-heading::before {
+    content: attr(data-number);
+    margin-right: 0.625rem;
+    font-family: var(--font-mono);
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    font-weight: 400;
+    color: var(--color-accent);
+  }
+
+  .numbered-heading::after {
+    content: "";
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    height: 1px;
+    background-color: var(--color-navy-lighter);
+    margin-left: 1.25rem;
+    position: relative;
+    top: 2px;
+  }
+
+  .btn-outline {
+    display: inline-block;
+    padding: 0.875rem 1.75rem;
+    border: 1px solid var(--color-accent);
+    border-radius: 4px;
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: var(--transition-default);
+    cursor: pointer;
+    background: transparent;
+    line-height: 1;
+    letter-spacing: 0.05em;
+  }
+
+  .btn-outline:hover {
+    background-color: var(--color-accent-tint);
+    outline: none;
+  }
+
+  .section {
+    padding: 6rem 0;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

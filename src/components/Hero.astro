@@ -1,0 +1,60 @@
+---
+// ここを自分の情報に変更してください
+const name = 'Takahashi Kosuke';
+const description =
+  '開発スピードとユーザー体験、どちらも妥協しない。それが自分のエンジニアとしてのこだわりです。';
+---
+
+<section
+  id="hero"
+  style="
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 6rem;
+    max-width: 1000px;
+  "
+>
+  <p
+    class="fade-in"
+    style="
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      color: var(--color-accent);
+      margin-bottom: 1.25rem;
+      transition-delay: 100ms;
+    "
+  >
+    Frontend Engineer
+  </p>
+
+  <h1
+    class="fade-in"
+    style="
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 600;
+      color: var(--color-slate-lighter);
+      line-height: 1.1;
+      margin: 0 0 0.5rem;
+      transition-delay: 200ms;
+    "
+  >
+    {name}.
+  </h1>
+
+  <p
+    class="fade-in"
+    style="
+      max-width: 500px;
+      font-size: 1.125rem;
+      line-height: 1.7;
+      color: var(--color-slate);
+      margin-bottom: 3rem;
+      transition-delay: 400ms;
+    "
+  >
+    {description}
+  </p>
+
+</section>

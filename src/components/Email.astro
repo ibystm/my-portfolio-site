@@ -1,0 +1,40 @@
+---
+const email = 'your@email.com';
+---
+
+<div
+  style="
+    position: fixed;
+    bottom: 0;
+    right: 2.5rem;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  "
+>
+  <a
+    href={`mailto:${email}`}
+    style="
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: var(--color-slate-light);
+      text-decoration: none;
+      writing-mode: vertical-rl;
+      transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+    "
+    onmouseover="this.style.color='var(--color-accent)'; this.style.transform='translateY(-3px)'"
+    onmouseout="this.style.color='var(--color-slate-light)'; this.style.transform='translateY(0)'"
+  >
+    {email}
+  </a>
+  <div
+    style="
+      width: 1px;
+      height: 90px;
+      background-color: var(--color-slate-light);
+    "
+  ></div>
+</div>

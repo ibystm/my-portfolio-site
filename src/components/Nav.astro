@@ -1,0 +1,116 @@
+---
+const navLinks = [
+  { name: '自己紹介', url: '#about', number: '01.' },
+  { name: '職歴', url: '#experience', number: '02.' },
+  { name: '連絡', url: '#contact', number: '03.' },
+];
+---
+
+<header
+  id="navbar"
+  style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    height: 70px;
+    transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  "
+>
+  <a
+    href="/"
+    style="
+      font-family: var(--font-mono);
+      color: var(--color-accent);
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: -1px;
+    "
+  >
+    <!-- ロゴ: 名前のイニシャルに変更してください -->
+    &lt;YN /&gt;
+  </a>
+
+  <nav style="display: flex; align-items: center; gap: 0.5rem;">
+    <ol
+      style="
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        margin: 0;
+        padding: 0;
+      "
+    >
+      {
+        navLinks.map((link) => (
+          <li>
+            <a
+              href={link.url}
+              style="
+                padding: 0.625rem 1rem;
+                font-family: var(--font-mono);
+                font-size: 0.8125rem;
+                color: var(--color-slate-lighter);
+                text-decoration: none;
+                transition: color 0.25s;
+              "
+              onmouseover="this.style.color='var(--color-accent)'"
+              onmouseout="this.style.color='var(--color-slate-lighter)'"
+            >
+              <span
+                style="
+                  color: var(--color-accent);
+                  margin-right: 0.25rem;
+                ">{link.number}</span
+              >{link.name}
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+    <a
+      href="/resume.pdf"
+      class="btn-outline"
+      style="margin-left: 0.75rem; padding: 0.625rem 1rem; font-size: 0.8125rem;"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      履歴書
+    </a>
+  </nav>
+</header>
+
+<script>
+  let prevScrollY = window.scrollY;
+  const navbar = document.getElementById('navbar');
+
+  window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    if (!navbar) return;
+
+    if (currentScrollY > 100) {
+      navbar.style.backgroundColor = 'rgba(10, 25, 47, 0.85)';
+      navbar.style.backdropFilter = 'blur(10px)';
+      navbar.style.boxShadow = '0 10px 30px -10px rgba(2,12,27,0.7)';
+    } else {
+      navbar.style.backgroundColor = 'transparent';
+      navbar.style.backdropFilter = 'none';
+      navbar.style.boxShadow = 'none';
+    }
+
+    if (currentScrollY > prevScrollY && currentScrollY > 100) {
+      navbar.style.transform = 'translateY(-70px)';
+    } else {
+      navbar.style.transform = 'translateY(0)';
+    }
+
+    prevScrollY = currentScrollY;
+  });
+</script>

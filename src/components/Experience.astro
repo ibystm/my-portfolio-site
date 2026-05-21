@@ -1,0 +1,161 @@
+---
+import { jobs } from '../data/experience';
+---
+
+<section
+  id="experience"
+  class="section fade-in"
+  style="padding: 6rem 6rem;"
+>
+  <h2 class="numbered-heading" data-number="02.">職歴</h2>
+
+  <div
+    style="
+      display: flex;
+      gap: 0;
+      min-height: 340px;
+    "
+  >
+    <!-- タブリスト -->
+    <div
+      id="tab-list"
+      role="tablist"
+      aria-label="Job tabs"
+      style="
+        display: flex;
+        flex-direction: column;
+        min-width: 140px;
+        border-left: 2px solid var(--color-navy-lighter);
+      "
+    >
+      {
+        jobs.map((job, i) => (
+          <button
+            role="tab"
+            aria-selected={i === 0 ? 'true' : 'false'}
+            data-tab={i}
+            style={`
+              background: transparent;
+              border: none;
+              border-left: 2px solid transparent;
+              margin-left: -2px;
+              padding: 0.75rem 1.25rem;
+              font-family: var(--font-mono);
+              font-size: 0.8125rem;
+              color: ${i === 0 ? 'var(--color-accent)' : 'var(--color-slate)'};
+              background-color: ${i === 0 ? 'var(--color-accent-tint)' : 'transparent'};
+              border-left-color: ${i === 0 ? 'var(--color-accent)' : 'transparent'};
+              text-align: left;
+              cursor: pointer;
+              transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+              white-space: nowrap;
+            `}
+          >
+            {job.company}
+          </button>
+        ))
+      }
+    </div>
+
+    <!-- タブパネル -->
+    <div style="flex: 1; padding: 0 1.5rem 0 2rem;">
+      {
+        jobs.map((job, i) => (
+          <div
+            role="tabpanel"
+            data-panel={i}
+            style={`display: ${i === 0 ? 'block' : 'none'};`}
+          >
+            <h3
+              style="
+                font-size: 1.25rem;
+                font-weight: 500;
+                color: var(--color-slate-lighter);
+                margin: 0 0 0.25rem;
+              "
+            >
+              {job.title}{' '}
+              <span style="color: var(--color-accent);">
+                @{' '}
+                <a
+                  href={job.companyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style="
+                    color: var(--color-accent);
+                    text-decoration: none;
+                  "
+                  onmouseover="this.style.textDecoration='underline'"
+                  onmouseout="this.style.textDecoration='none'"
+                >
+                  {job.company}
+                </a>
+              </span>
+            </h3>
+
+            <p
+              style="
+                font-family: var(--font-mono);
+                font-size: 0.8125rem;
+                color: var(--color-slate);
+                margin: 0 0 1.5rem;
+              "
+            >
+              {job.period}
+            </p>
+
+            <ul style="list-style: none; padding: 0; margin: 0;">
+              {job.bullets.map((bullet) => (
+                <li
+                  style="
+                    display: flex;
+                    align-items: flex-start;
+                    gap: 0.75rem;
+                    margin-bottom: 0.75rem;
+                    line-height: 1.7;
+                    font-size: 0.9375rem;
+                  "
+                >
+                  <span
+                    style="
+                      color: var(--color-accent);
+                      margin-top: 0.35rem;
+                      flex-shrink: 0;
+                    "
+                  >
+                    ▹
+                  </span>
+                  {bullet}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  const tabs = document.querySelectorAll('[role="tab"]');
+  const panels = document.querySelectorAll('[role="tabpanel"]');
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const index = Number((tab as HTMLElement).dataset.tab);
+
+      tabs.forEach((t, i) => {
+        const el = t as HTMLElement;
+        const active = i === index;
+        el.style.color = active ? 'var(--color-accent)' : 'var(--color-slate)';
+        el.style.backgroundColor = active ? 'var(--color-accent-tint)' : 'transparent';
+        el.style.borderLeftColor = active ? 'var(--color-accent)' : 'transparent';
+        el.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+
+      panels.forEach((panel, i) => {
+        (panel as HTMLElement).style.display = i === index ? 'block' : 'none';
+      });
+    });
+  });
+</script>

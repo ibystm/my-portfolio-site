@@ -1,0 +1,76 @@
+---
+const email = 'your@email.com';
+---
+
+<section
+  id="contact"
+  class="fade-in"
+  style="
+    padding: 6rem 6rem 10rem;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  "
+>
+  <p
+    style="
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      color: var(--color-accent);
+      margin-bottom: 1.25rem;
+    "
+  >
+    03. 次のステップへ
+  </p>
+
+  <h2
+    style="
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 600;
+      color: var(--color-slate-lighter);
+      margin: 0 0 1.5rem;
+    "
+  >
+    お問い合わせ
+  </h2>
+
+  <p
+    style="
+      font-size: 1.125rem;
+      line-height: 1.8;
+      color: var(--color-slate);
+      margin-bottom: 3rem;
+    "
+  >
+    現在、新しい機会を歓迎しています。質問でも、プロジェクトのご相談でも、気軽なご挨拶でも、いつでもお気軽にどうぞ。
+  </p>
+
+  <a href={`mailto:${email}`} class="btn-outline" style="font-size: 1rem; padding: 1.125rem 2.5rem;">
+    メッセージを送る
+  </a>
+</section>
+
+<footer
+  style="
+    text-align: center;
+    padding: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-slate);
+    line-height: 1.8;
+  "
+>
+  <p style="margin: 0;">
+    デザイン・制作：
+    <a
+      href="https://github.com/yourusername"
+      target="_blank"
+      rel="noopener noreferrer"
+      style="color: var(--color-accent); text-decoration: none;"
+      onmouseover="this.style.textDecoration='underline'"
+      onmouseout="this.style.textDecoration='none'"
+    >
+      Your Name
+    </a>
+  </p>
+</footer>
