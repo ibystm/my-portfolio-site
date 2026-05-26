@@ -98,13 +98,16 @@ import { jobs } from '../data/experience';
               "
             >
               {job.period}
-              <span style="
-                color: var(--color-slate);
-                background-color: var(--color-navy-lighter);
+              <span style={`
                 border-radius: 9999px;
-                padding: 0.1rem 0.6rem;
+                padding: 0.2rem 0.7rem;
                 font-size: 0.75rem;
-              ">{job.employmentType}</span>
+                font-weight: 500;
+                ${job.employmentType === '正社員'
+                  ? 'color: var(--color-accent); background-color: var(--color-accent-tint); border: 1px solid rgba(100, 255, 218, 0.3);'
+                  : 'color: rgb(255, 200, 87); background-color: rgba(255, 200, 87, 0.08); border: 1px solid rgba(255, 200, 87, 0.3);'
+                }
+              `}>{job.employmentType}</span>
             </p>
 
             <!-- 会社概要 -->
@@ -120,6 +123,47 @@ import { jobs } from '../data/experience';
             >
               {job.description}
             </p>
+
+            <!-- 主な成果 -->
+            {job.achievements && job.achievements.length > 0 && (
+              <div
+                style="
+                  margin-bottom: 1.5rem;
+                  padding: 1rem 1.25rem;
+                  background: rgba(100, 255, 218, 0.04);
+                  border: 1px solid rgba(100, 255, 218, 0.18);
+                  border-radius: 6px;
+                "
+              >
+                <p
+                  style="
+                    font-family: var(--font-mono);
+                    font-size: 0.75rem;
+                    color: var(--color-accent);
+                    margin: 0 0 0.75rem;
+                  "
+                >
+                  主な成果
+                </p>
+                <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">
+                  {job.achievements.map((achievement) => (
+                    <li
+                      style="
+                        display: flex;
+                        align-items: flex-start;
+                        gap: 0.625rem;
+                        font-size: 0.875rem;
+                        line-height: 1.65;
+                        color: var(--color-slate-lighter);
+                      "
+                    >
+                      <span style="color: var(--color-accent); flex-shrink: 0; margin-top: 0.3rem; font-size: 0.6rem;">◆</span>
+                      {achievement}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             <!-- 箇条書き -->
             <ul style="list-style: none; padding: 0; margin: 0 0 1.5rem;">

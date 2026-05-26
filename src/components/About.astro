@@ -3,9 +3,9 @@ const skills = [
   'TypeScript',
   'React / Next.js / Remix',
   'React Native',
-  'Redux Toolkit',
   'Storybook',
-  'Jest',
+  'Jest / Vitest',
+  'Claude Code',
 ];
 ---
 
@@ -26,7 +26,7 @@ const skills = [
   >
     <div>
       <p style="margin-bottom: 1rem; line-height: 1.8; font-size: 1rem;">
-        はじめまして、<span style="color: var(--color-accent);">高橋 康介</span> です。
+        はじめまして、<span style="color: var(--color-accent);">高橋 康友</span> です。
         TypeScript / React を主軸に、フロントエンド開発を専門としています。
         スタートアップから上場企業まで、プロダクトの 0→1 フェーズと 1→10 フェーズを両方経験してきました。
       </p>
@@ -37,6 +37,10 @@ const skills = [
         コードベース全体の品質向上にも積極的に取り組んでいます。
         現在は<a href="#experience" style="color: var(--color-accent); text-decoration: none;">カオナビ</a>でリードエンジニアとして
         チームの技術的な意思決定と開発推進を担っています。
+      </p>
+
+      <p style="margin-bottom: 1.5rem; line-height: 1.8; font-size: 1rem;">
+        仕事以外では、犬との散歩・映画鑑賞・アート鑑賞・筋トレを楽しんでいます。
       </p>
 
       <p style="margin-bottom: 1.5rem; line-height: 1.8; font-size: 1rem;">
@@ -91,7 +95,7 @@ const skills = [
             padding-top: 100%;
             border-radius: 4px;
             overflow: hidden;
-            background-color: var(--color-accent);
+            background-color: transparent;
           "
         >
           <!-- /public/me.jpg に写真を置いてください -->
@@ -106,12 +110,7 @@ const skills = [
               height: 100%;
               object-fit: cover;
               border-radius: 4px;
-              mix-blend-mode: multiply;
-              filter: grayscale(100%) contrast(1);
-              transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
             "
-            onmouseover="this.style.filter='none'; this.style.mixBlendMode='normal'"
-            onmouseout="this.style.filter='grayscale(100%) contrast(1)'; this.style.mixBlendMode='multiply'"
           />
         </div>
         <!-- アクセントボーダー装飾 -->
